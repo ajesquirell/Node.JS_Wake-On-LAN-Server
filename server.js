@@ -6,7 +6,7 @@ const fs = require('fs');
 
 // Express module
 const express = require('express');
-const { json } = require('express');
+//const { json } = require('express');
 const app = express();
 
 app.use(log_response);
@@ -20,7 +20,7 @@ app.get('/wake_device', (req, res) => {
     res.write('<html>');
     res.write('<head> <title> Success! </title> </head>');
     res.write(' <body> Attempted to wake your device!!<br>');
-    res.write('<form action="http://127.0.0.1:3000/"><button>Go back home</button></form>')
+    res.write('<form action="/"><button>Go back home</button></form>')
     res.write('</body></html>');
     res.end();
 })
@@ -29,7 +29,7 @@ app.get('/add_device', process_mac, append_to_file, (req, res) => {
         res.write('<html>');
         res.write('<head> <title> Success! </title> </head>');
         res.write(' <body> New device added!<br>');
-        res.write('<form action="http://127.0.0.1:3000/"><button>Go back home</button></form>')
+        res.write('<form action="/"><button>Go back home</button></form>')
         res.write('</body></html>');
         res.end();
 })
@@ -42,7 +42,7 @@ function process_mac(req, res, next){
         res.write('<html>');
         res.write('<head> <title> Not valid </title> </head>');
         res.write(' <body> Mac address not valid!<br>');
-        res.write('<form action="http://127.0.0.1:3000/"><button>Go back home</button></form>')
+        res.write('<form action="/"><button>Go back home</button></form>')
         res.write('</body></html>');
         res.end();
     }
