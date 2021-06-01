@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<head>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <h1>Choose a device to wake:</h1>
+
+    <ul id="devices">
+
+    </ul>
+
+    <br>
+    <footer><b>Add new device:</b>
+        <form action="http://127.0.0.1:3000/add_device" method="GET">
+            <label for="name">New device name:</label><br>
+            <input type="text" name="name" id="name"><br>
+            <label for="mac_address">Mac Address:</label><br>
+            <input type="text" name="mac_address" id="mac_address"><br>
+            <button>Submit</button>
+        </form>
+    </footer>
+</body>

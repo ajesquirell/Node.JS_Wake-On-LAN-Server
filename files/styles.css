@@ -1,0 +1,14 @@
+body{
+    color: red;
+}
+footer b{
+    font-size: larger;
+}
+
+li{
+    list-style: none;
+}
+
+li:hover{
+    color: green;
+}
