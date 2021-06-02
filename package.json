@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.17.1",
+    "nodemon": "^2.0.7",
     "wake-on-lan": "^0.1.0",
     "wake_on_lan": "^1.0.0"
   },
