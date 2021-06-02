@@ -13,7 +13,7 @@ const fetchJson = async () => {
 fetchJson()
     .then(data =>{
         console.log('data: ', data);
-        deviceData = data
+        deviceData = data;
 
         for (const p in deviceData) {
             var listItem = document.createElement("li");

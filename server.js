@@ -6,7 +6,6 @@ const fs = require('fs');
 
 // Express module
 const express = require('express');
-//const { json } = require('express');
 const app = express();
 
 app.use(log_response);
@@ -15,7 +14,6 @@ app.use(express.static('files')); // This automatically serves index.html in the
 
 app.get('/wake_device', (req, res) => {
     wol.wake(req.query.mac_address);
-    //wol.wake('00:D8:61:5A:8F:C0');
     console.log(req.query.mac_address);
     res.write('<html>');
     res.write('<head> <title> Success! </title> </head>');
