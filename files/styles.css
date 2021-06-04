@@ -7,7 +7,7 @@ footer b{
 
 li{
     list-style: none;
-    transition: background-color .6s, color .6s;
+    transition: background-color .5s, color .5s;
     width: max-content;
     padding: .3%;
     margin-bottom: .1%;
@@ -21,11 +21,30 @@ li:hover{
 
 li > div {
     visibility: hidden;
+    display: inline-block;
+    transition: transform .5s, color .5s, visibility .5s;
+    color: white;
+    margin-right: 20px;
+
 }
 
-/* "Remove device" div */
-li:hover > div {
+/* "Wake" div - the :active is for mobile devices */
+li:hover > div.wake, li:active > div.wake {
     visibility: visible;
-    /*padding-left: 10px;*/
-    color: green;
+    color: red;
+
+    transform: translateX(35%);
+}
+
+
+/* "Remove" div - the :active is for mobile devices */
+li:hover > div.remove, li:active > div.remove {
+    visibility: visible;
+    color: red;
+
+    transform: translateX(15%);
+}
+
+li > div:hover {
+    background-color: chartreuse;
 }

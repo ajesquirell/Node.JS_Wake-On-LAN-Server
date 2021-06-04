@@ -32,6 +32,15 @@ app.get('/add_device', process_mac, append_to_file, (req, res) => {
         res.end();
 })
 
+app.get('/remove_device', delete_from_file, (req, res) => {
+    res.write('<html>');
+    res.write('<head> <title> Success! </title> </head>');
+    res.write(' <body> Device Deleted!<br>');
+    res.write('<form action="/"><button>Go back home</button></form>')
+    res.write('</body></html>');
+    res.end();
+})
+
 function process_mac(req, res, next){
     if (/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})|([0-9a-fA-F]{4}\\.[0-9a-fA-F]{4}\\.[0-9a-fA-F]{4})$/.test(req.query.mac_address)) {
         next();
@@ -60,7 +69,22 @@ function append_to_file(req, res, next){
             next();
         }
     });
-    
+}
+
+function delete_from_file(req, res, next) {
+    fs.readFile('./files/macs.json', (err, data) => {
+        if (err) throw err;
+        else {
+            var jsonData = JSON.parse(data);
+            console.log(req.query.objNum);
+            jsonData.splice(req.query.objNum, 1);
+            fs.writeFile('./files/macs.json', JSON.stringify(jsonData, null, 2), (err) => {
+                if (err) { throw err; }
+                else { console.log('Data deleted!'); }
+            });
+            next();
+        }
+    });
 }
 
 // Testing
