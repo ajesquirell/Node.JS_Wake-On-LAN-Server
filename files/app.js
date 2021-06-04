@@ -16,12 +16,17 @@ fetchJson()
         deviceData = data;
 
         for (const p in deviceData) {
-            var listItem = document.createElement("li");
-            var text = document.createTextNode(deviceData[p]["name"]);
+            var listItem = document.createElement("li"); // Create li element
+            var listItemText = document.createTextNode(deviceData[p]["name"]); // Create text for the li
             console.log(deviceData[p]["name"]);
-            listItem.appendChild(text);
-            document.getElementById('devices').appendChild(listItem);
-            listItem.onclick = () => {window.location.href = `/wake_device?mac_address=${deviceData[p]["mac"]}`};
+            listItem.appendChild(listItemText); // Add text to the li
+            document.getElementById('devices').appendChild(listItem); // Add li to the ul
+            listItem.onclick = () => {window.location.href = `/wake_device?mac_address=${deviceData[p]["mac"]}`}; // Add click functionality to li
+
+            var div = document.createElement('div');
+            var divText = document.createTextNode('Remove Device');
+            div.appendChild(divText);
+            listItem.appendChild(div); // Add div to li to appear on hover
         }
     })
     .catch(err => console.log('error: ', err));
